@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    List<EnemyAbstract> enemies = new List<EnemyAbstract>();
-    EnemyAbstract minEnemy;
-    EnemyAbstract maxEnemy;
+    List<EnemyAbstractOld> enemies = new List<EnemyAbstractOld>();
+    EnemyAbstractOld minEnemy;
+    EnemyAbstractOld maxEnemy;
     void Start()
     {
         this.LoadEnemies();
@@ -19,19 +19,19 @@ public class EnemyManager : MonoBehaviour
     {
         foreach(Transform child in transform)
         {
-            EnemyAbstract enemy = child.GetComponent<EnemyAbstract>();
+            EnemyAbstractOld enemy = child.GetComponent<EnemyAbstractOld>();
             this.enemies.Add(enemy);
         }
     }
     protected void ShowEnemies()
     {
-        foreach(EnemyAbstract enemy in enemies)
+        foreach(EnemyAbstractOld enemy in enemies)
         {
             Debug.Log(enemy.name + " HP: " + enemy.GetHp()+ " / isDead: "+ enemy.IsDead());
         }
     }
 
-    public List<EnemyAbstract> GetEnemies()
+    public List<EnemyAbstractOld> GetEnemies()
     {
         return this.enemies;
     }
@@ -47,14 +47,14 @@ public class EnemyManager : MonoBehaviour
         if (maxEnemy == null) Debug.Log("No Enemy.");
         else Debug.Log("Max: " + this.maxEnemy.Health, this.maxEnemy.gameObject);
     }
-    protected EnemyAbstract FindEnemyWithLowestHealth(List<EnemyAbstract> enemies)
+    protected EnemyAbstractOld FindEnemyWithLowestHealth(List<EnemyAbstractOld> enemies)
     {
         if (enemies == null || enemies.Count == 0)
         {
             return null;
         }
-        EnemyAbstract minEnemy = enemies[0];
-        foreach (EnemyAbstract enemy in this.enemies)
+        EnemyAbstractOld minEnemy = enemies[0];
+        foreach (EnemyAbstractOld enemy in this.enemies)
         {
             if (enemy.Health < minEnemy.Health)
             {
@@ -63,14 +63,14 @@ public class EnemyManager : MonoBehaviour
         }
         return minEnemy;
     }
-    protected virtual EnemyAbstract FindEnemyWithBiggestHealth(List<EnemyAbstract> enemies)
+    protected virtual EnemyAbstractOld FindEnemyWithBiggestHealth(List<EnemyAbstractOld> enemies)
     {
         if (enemies == null || enemies.Count == 0)
         {
             return null;
         }
-        EnemyAbstract maxEnemy = enemies[0];
-        foreach (EnemyAbstract enemy in this.enemies)
+        EnemyAbstractOld maxEnemy = enemies[0];
+        foreach (EnemyAbstractOld enemy in this.enemies)
         {
             if (enemy.Health > maxEnemy.Health)
             {
