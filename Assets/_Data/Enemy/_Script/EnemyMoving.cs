@@ -33,7 +33,7 @@ public class EnemyMoving : EnemyAbstract
 
     protected virtual void Moving()
     {
-       // this.LoadMovingStatus();
+       this.LoadMovingStatus();
         if (this.isFinish)
         {
             this.ctrl.Agent.isStopped = true;
@@ -52,10 +52,10 @@ public class EnemyMoving : EnemyAbstract
         if (this.currentPointIndex > this.path.Points.Count - 1) this.isFinish = true;
     }
 
-    //protected virtual void LoadMovingStatus()
-    //{
-    //    this.isMoving = !this.ctrl.Agent.isStopped;
-    //    this.ctrl.Animator.SetBool("isMoving", this.isMoving);
-    //}
+    protected virtual void LoadMovingStatus()
+    {
+        this.isMoving = !this.ctrl.Agent.isStopped;
+        this.ctrl.Animator.SetBool("isMoving", this.isMoving);
+    }
 
 }
