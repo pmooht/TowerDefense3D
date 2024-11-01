@@ -27,8 +27,8 @@ public class EnemyMoving : EnemyAbstract
     protected virtual void LoadPathMoving()
     {
         if (this.path != null) return;
-        this.path = GameObject.Find("PathMoving_1").GetComponent<PathMoving>();
-        Debug.Log(transform.name + ": LoadAgent", gameObject);
+        this.path = GameObject.Find("PathMoving_0").GetComponent<PathMoving>();
+       // Debug.Log(transform.name + ": LoadAgent", gameObject);
     }
 
     protected virtual void Moving()
