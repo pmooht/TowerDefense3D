@@ -5,11 +5,21 @@ using UnityEngine;
 public class TowerShooting : TowerAbstract
 {
     [SerializeField] protected EnemyCtrl target;
-    
+    [SerializeField] protected float timer = 0;
+    [SerializeField] protected float delay = 1f;
+    [SerializeField] protected int firePointIndex = 0;
+    [SerializeField] protected List<FirePoint> firePoints = new();
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadFirePoint();
+    }
     protected virtual void FixedUpdate()
     {
         this.GetTarget();
         this.LookAtTarget();
+        this.Shooting();
     }
     protected virtual void GetTarget()
     {
@@ -21,5 +31,28 @@ public class TowerShooting : TowerAbstract
         if (this.target == null) return;
         this.ctrl.Rotator.LookAt(this.target.transform.position);
     }
-     //Mai lam tiep phan bullet 
+    
+    protected virtual void Shooting()
+    {
+        this.timer += Time.deltaTime;
+        if (this.target == null) return;
+        if (this.timer < this.delay) return;
+        this.timer = 0;
+
+        FirePoint firePoint = this.GetFirePoint();
+        EffectSpawner.Instance.SpawnBullet(firePoint.transform.position, firePoint.transform.rotation);
+    }
+    protected virtual FirePoint GetFirePoint()
+    {
+        this.firePointIndex++;
+        if (this.firePointIndex >= this.firePoints.Count) this.firePointIndex = 0;
+        return this.firePoints[this.firePointIndex];
+    }
+    protected virtual void LoadFirePoint()
+    {
+        if (this.firePoints.Count > 0 ) return;
+        FirePoint[] points = this.ctrl.GetComponentsInChildren<FirePoint>();
+        this.firePoints = new List<FirePoint>(points);
+        Debug.LogWarning(transform.name + ": LoadFirePoint", gameObject);
+    }
 }
