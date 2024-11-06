@@ -42,9 +42,6 @@ public class TowerRadar : SaiBehaviour
 
     protected virtual void OnTriggerEnter(Collider collider)
     {
-        Targetable targetable = collider.GetComponent<Targetable>();
-        if (targetable == null) return;
-
         EnemyCtrl enemyCtrl = collider.GetComponentInParent<EnemyCtrl>();
         if (enemyCtrl == null) return;
         this.AddEnemy(enemyCtrl);
