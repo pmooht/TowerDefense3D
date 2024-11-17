@@ -10,7 +10,18 @@ public abstract class DamageReceiver : SaiBehaviour
     [SerializeField] protected bool isImmotal = false; //Bat tu
     public virtual void Receiver(int damage, DamageSender damageSender)
     {
-        this.currentHP -= damage;
+         if (!this.isImmotal) this.currentHP -= damage;
+         if (this.currentHP < 0) this.currentHP = 0;
+
+        if (this.IsDead()) this.OnDead();
+        else this.OnHurt();
     }
 
+    public virtual bool IsDead()
+    {
+        return this.isDead = this.currentHP <= 0;
+    }
+    protected abstract void OnDead();
+
+    protected abstract void OnHurt();
 }

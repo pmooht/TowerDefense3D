@@ -335,6 +335,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16b13c104098c240abd08f309b99549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHP: 10
+  maxHP: 10
+  isDead: 0
+  isImmotal: 0
 --- !u!136 &1578310612285097978
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -649,7 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50d43bf4befd32428fc119f043b2905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ctrl: {fileID: 3549921529843470466}
+  ctrl: {fileID: 0}
   path: {fileID: 0}
   currentPointIndex: 0
   currentPoint: {fileID: 0}
@@ -795,7 +799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5648166965839346788}
   - component: {fileID: 3172585727270718387}
-  - component: {fileID: 3549921529843470466}
+  - component: {fileID: 7123109340439610142}
   m_Layer: 0
   m_Name: Mutant
   m_TagString: Untagged
@@ -843,7 +847,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3549921529843470466
+--- !u!114 &7123109340439610142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -852,9 +856,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4594129990306345768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0922a786befe3d4d8fd9d8fd26d2242, type: 3}
+  m_Script: {fileID: 11500000, guid: 7839bd52c9960424f914fd4118267fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  despawn: {fileID: 0}
   agent: {fileID: 3172585727270718387}
   animator: {fileID: 1612712077541591100}
 --- !u!1 &4623921199135672825

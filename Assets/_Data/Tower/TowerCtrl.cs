@@ -27,6 +27,6 @@ public class TowerCtrl : SaiBehaviour
     {
         if (this.rotator != null) return;
         this.rotator = transform.Find("Model").Find("Rotator");
-        Debug.Log(transform.name + ": LoadRotator", gameObject);
+       // Debug.Log(transform.name + ": LoadRotator", gameObject);
     }
 }

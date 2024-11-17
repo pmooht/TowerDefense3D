@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDamageReceiver : DamageReceiver
+public class EffectDespawn : Despawn<EffectCtrl>
 {
     
 }

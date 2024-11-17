@@ -14,6 +14,6 @@ public abstract class EnemyAbstract : SaiBehaviour
     {
         if(this.ctrl != null) return;
         this.ctrl = GetComponentInParent<EnemyCtrl>();
-        Debug.Log(transform.name + ": LoadEnemyCtrl", gameObject);
+        //Debug.Log(transform.name + ": LoadEnemyCtrl", gameObject);
     }
 }
