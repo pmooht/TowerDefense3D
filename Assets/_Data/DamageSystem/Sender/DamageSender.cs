@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public abstract class DamageSender : SaiBehaviour
 {
-    [SerializeField] protected int damage = 1;
+    [SerializeField] protected int damage = 10;
     [SerializeField] protected Rigidbody rigid;
     [SerializeField] protected Collider _collider;
 

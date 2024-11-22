@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletMoving : SaiBehaviour
 {
-    public float speed = 10f;
+    public float speed = 20f;
     protected virtual void Update()
     {
         this.Moving();

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class TowerAbstract : SaiBehaviour
 {
+    [Header("Tower")]
     [SerializeField] protected TowerCtrl ctrl;
 
     protected override void LoadComponents()

@@ -554,6 +554,55 @@ Transform:
   - {fileID: 1247500782972464595}
   m_Father: {fileID: 1958136648865487761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2219239866805044909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6807192771228447755}
+  - component: {fileID: 1912483219077944584}
+  m_Layer: 0
+  m_Name: Despawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6807192771228447755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2219239866805044909}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5648166965839346788}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1912483219077944584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2219239866805044909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1847cd34a063643afdccd923f233df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 0}
+  spawner: {fileID: 0}
+  isDespawnByTime: 0
+  timeLife: 7
+  currentTime: 7
 --- !u!1 &2344835788360396680
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,7 +848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5648166965839346788}
   - component: {fileID: 3172585727270718387}
-  - component: {fileID: 7123109340439610142}
+  - component: {fileID: 5325302166987262139}
   m_Layer: 0
   m_Name: Mutant
   m_TagString: Untagged
@@ -823,6 +872,7 @@ Transform:
   - {fileID: 8242409391507269029}
   - {fileID: 9180696733078061549}
   - {fileID: 4716200050360785678}
+  - {fileID: 6807192771228447755}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &3172585727270718387
@@ -847,7 +897,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7123109340439610142
+--- !u!114 &5325302166987262139
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -859,9 +909,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7839bd52c9960424f914fd4118267fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawn: {fileID: 0}
+  despawn: {fileID: 1912483219077944584}
   agent: {fileID: 3172585727270718387}
   animator: {fileID: 1612712077541591100}
+  enemydamageReceiver: {fileID: 6817828823534969591}
 --- !u!1 &4623921199135672825
 GameObject:
   m_ObjectHideFlags: 0

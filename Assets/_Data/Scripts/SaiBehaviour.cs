@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SaiBehaviour : MonoBehaviour
 {
+    protected virtual void Start()
+    {
+        
+    }
     protected virtual void Reset()
     {
         this.LoadComponents();
