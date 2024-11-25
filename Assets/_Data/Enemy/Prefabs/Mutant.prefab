@@ -339,6 +339,8 @@ MonoBehaviour:
   maxHP: 10
   isDead: 0
   isImmotal: 0
+  ctrl: {fileID: 5325302166987262139}
+  capsuleCollider: {fileID: 1578310612285097978}
 --- !u!136 &1578310612285097978
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -354,7 +356,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -598,7 +600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1847cd34a063643afdccd923f233df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
+  parent: {fileID: 5325302166987262139}
   spawner: {fileID: 0}
   isDespawnByTime: 0
   timeLife: 7
@@ -702,7 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50d43bf4befd32428fc119f043b2905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ctrl: {fileID: 0}
+  ctrl: {fileID: 5325302166987262139}
   path: {fileID: 0}
   currentPointIndex: 0
   currentPoint: {fileID: 0}
@@ -912,7 +914,7 @@ MonoBehaviour:
   despawn: {fileID: 1912483219077944584}
   agent: {fileID: 3172585727270718387}
   animator: {fileID: 1612712077541591100}
-  enemydamageReceiver: {fileID: 6817828823534969591}
+  enemyDamageReceiver: {fileID: 6817828823534969591}
 --- !u!1 &4623921199135672825
 GameObject:
   m_ObjectHideFlags: 0

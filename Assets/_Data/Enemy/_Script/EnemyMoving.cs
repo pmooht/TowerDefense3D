@@ -28,13 +28,13 @@ public class EnemyMoving : EnemyAbstract
     {
         if (this.path != null) return;
         this.path = GameObject.Find("PathMoving_0").GetComponent<PathMoving>();
-       // Debug.Log(transform.name + ": LoadAgent", gameObject);
+        // Debug.Log(transform.name + ": LoadPathMoving", gameObject);
     }
 
     protected virtual void Moving()
     {
        this.LoadMovingStatus();
-        if (this.isFinish)
+        if (this.isFinish || this.IsDead())
         {
             this.ctrl.Agent.isStopped = true;
             return;
@@ -44,6 +44,10 @@ public class EnemyMoving : EnemyAbstract
         this.ctrl.Agent.SetDestination(this.currentPoint.transform.position);
     }
 
+    protected virtual bool IsDead()
+    {
+        return this.ctrl.EnemyDamageReceiver.IsDead();
+    }
     protected virtual void GetNextPoint()
     {
         this.currentPoint = this.path.GetPoint(this.currentPointIndex);

@@ -16,6 +16,15 @@ public abstract class DamageReceiver : SaiBehaviour
         if (this.IsDead()) this.OnDead();
         else this.OnHurt();
     }
+    //Ham duoc goi khi ena
+    protected virtual void OnEnable()
+    {
+        this.Reborn();
+    }
+    protected virtual void Reborn()
+    {
+        this.currentHP = this.maxHP;
+    }
 
     public virtual bool IsDead()
     {

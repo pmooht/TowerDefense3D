@@ -44,6 +44,7 @@ public class EnemyWave : SaiBehaviour
         this.spawnedEnemies.Add(newEnemy);
     }
 
+    // Xoa khoi danh sach spawnedEnemies 
     protected virtual void RemoveDeadOne()
     {
         foreach (EnemyCtrl enemyCtrl in this.spawnedEnemies)

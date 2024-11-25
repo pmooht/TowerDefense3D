@@ -14,6 +14,7 @@ public class TowerRadar : SaiBehaviour
     protected virtual void FixedUpdate()
     {
         this.FindNearest();
+        this.RemoveDeadEnemy();
     }
 
     protected override void LoadComponents()
@@ -85,4 +86,17 @@ public class TowerRadar : SaiBehaviour
         return this.nearest;
     }
 
+    // Xoa enemy ra khoi radar
+    protected virtual void RemoveDeadEnemy()
+    {
+        foreach (EnemyCtrl enemyCtrl in this.enemies)
+        {
+            if (enemyCtrl.EnemyDamageReceiver.IsDead())
+            {
+                if (enemyCtrl == this.nearest) this.nearest = null;
+                this.enemies.Remove(enemyCtrl);
+                return;
+            }
+        }
+    }
 }
