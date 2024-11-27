@@ -339,6 +339,7 @@ MonoBehaviour:
   maxHP: 10
   isDead: 0
   isImmotal: 0
+  isHit: 0
   ctrl: {fileID: 5325302166987262139}
   capsuleCollider: {fileID: 1578310612285097978}
 --- !u!136 &1578310612285097978
@@ -649,7 +650,7 @@ Animator:
   m_GameObject: {fileID: 2344835788360396680}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3604df00d5c9e3d4891d1ab0334c8f57, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0e276aed7c8ceda4bb4060885669c618, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -857,7 +858,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5648166965839346788
 Transform:
   m_ObjectHideFlags: 0

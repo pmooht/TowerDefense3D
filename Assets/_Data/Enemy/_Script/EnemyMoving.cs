@@ -43,23 +43,22 @@ public class EnemyMoving : EnemyAbstract
         this.GetNextPoint();
         this.ctrl.Agent.SetDestination(this.currentPoint.transform.position);
     }
-
+    protected virtual void LoadMovingStatus()
+    {
+        this.isMoving = !this.ctrl.Agent.isStopped;
+        this.ctrl.Animator.SetBool("isMoving", this.isMoving);
+    }
     protected virtual bool IsDead()
     {
         return this.ctrl.EnemyDamageReceiver.IsDead();
     }
+
     protected virtual void GetNextPoint()
     {
         this.currentPoint = this.path.GetPoint(this.currentPointIndex);
         this.pointDistance = Vector3.Distance(this.currentPoint.transform.position, transform.position);
         if (this.pointDistance < this.pointDistanceLimit) this.currentPointIndex++;
         if (this.currentPointIndex > this.path.Points.Count - 1) this.isFinish = true;
-    }
-
-    protected virtual void LoadMovingStatus()
-    {
-        this.isMoving = !this.ctrl.Agent.isStopped;
-        this.ctrl.Animator.SetBool("isMoving", this.isMoving);
     }
 
 }

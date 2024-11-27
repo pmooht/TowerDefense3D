@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class DamageReceiver : SaiBehaviour
@@ -8,15 +6,18 @@ public abstract class DamageReceiver : SaiBehaviour
     [SerializeField] protected int maxHP = 10;
     [SerializeField] protected bool isDead = false;
     [SerializeField] protected bool isImmotal = false; //Bat tu
+    [SerializeField] protected bool isHit = false;
+
+
     public virtual void Receiver(int damage, DamageSender damageSender)
     {
          if (!this.isImmotal) this.currentHP -= damage;
          if (this.currentHP < 0) this.currentHP = 0;
 
-        if (this.IsDead()) this.OnDead();
-        else this.OnHurt();
+         if (this.IsDead()) this.OnDead();
+         else this.OnHurt();
     }
-    //Ham duoc goi khi ena
+    //Ham duoc goi khi enable
     protected virtual void OnEnable()
     {
         this.Reborn();

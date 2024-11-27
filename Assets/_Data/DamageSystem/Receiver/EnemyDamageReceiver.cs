@@ -38,16 +38,37 @@ public class EnemyDamageReceiver : DamageReceiver
     }
     protected override void OnDead()
     {
+        this.ctrl.Agent.isStopped = true;   
         this.ctrl.Animator.SetBool("isDead", this.isDead);
         this.capsuleCollider.enabled = false;
         Invoke(nameof(this.DoDespawn), 5f);
-        //this.ctrl.Despawn.DoDespawn();
+    }
+    public override void Receiver(int damage, DamageSender damageSender)
+    {
+        base.Receiver(damage, damageSender);
+        this.OnHurt();
     }
    
     protected override void OnHurt()
     {
-        //throw new System.NotImplementedException();
+        if (this.ctrl.Animator.GetBool("isHit")) return;
+
+       // this.ctrl.Agent.isStopped = true; 
+        this.ctrl.Animator.SetBool("isHit", true); 
+
+        StartCoroutine(ResetHitState());
     }
+
+    private IEnumerator ResetHitState()
+    {
+        yield return new WaitForSeconds(0.3f); 
+        if (!this.IsDead())
+        {
+            this.ctrl.Agent.isStopped = false;
+            this.ctrl.Animator.SetBool("isHit", false); 
+        }
+    }
+
     protected override void Reborn()
     {
         base.Reborn();
