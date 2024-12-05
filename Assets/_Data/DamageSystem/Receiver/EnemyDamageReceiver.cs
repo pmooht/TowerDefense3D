@@ -42,6 +42,9 @@ public class EnemyDamageReceiver : DamageReceiver
         this.ctrl.Animator.SetBool("isDead", this.isDead);
         this.capsuleCollider.enabled = false;
         Invoke(nameof(this.DoDespawn), 5f);
+
+        InventoriesManager.Instance.AddItem(ItemCode.Gold, 1);
+        InventoriesManager.Instance.AddItem(ItemCode.PlayerExp, 1);
     }
     public override void Receiver(int damage, DamageSender damageSender)
     {
