@@ -33,7 +33,19 @@ public class TowerShooting : TowerAbstract
         if (this.target == null) return;
         this.ctrl.Rotator.LookAt(this.target.transform.position);
     }
-    
+    //protected virtual void LookAtTarget()
+    //{
+    //    if (this.target == null) return;
+
+    //    Collider collider = this.target.transform.Find("DamageReceiver").GetComponent<Collider>();
+    //    if (collider == null) return;
+    //    Vector3 targetPosition = collider.bounds.center;
+    //    this.ctrl.Rotator.LookAt(targetPosition);
+    //    Debug.DrawLine(this.ctrl.Rotator.position, targetPosition, Color.red, 2f);
+    //}
+
+
+
     protected virtual void Shooting()
     {
         this.timer += Time.deltaTime;

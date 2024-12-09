@@ -43,7 +43,11 @@ public class EnemyDamageReceiver : DamageReceiver
         this.capsuleCollider.enabled = false;
         Invoke(nameof(this.DoDespawn), 5f);
 
-        InventoriesManager.Instance.AddItem(ItemCode.Gold, 5);
+        ItemDropSpawnerCtrl.Instance.DropMany(ItemCode.Gold, transform.position, 5);
+        ItemDropSpawnerCtrl.Instance.Drop(ItemCode.Wand, transform.position, 1);
+        ItemDropSpawnerCtrl.Instance.Drop(ItemCode.Shotgun, transform.position, 1);
+        ItemDropSpawnerCtrl.Instance.Drop(ItemCode.Piston, transform.position, 1);
+        ItemDropSpawnerCtrl.Instance.Drop(ItemCode.Bow, transform.position, 1);
         InventoriesManager.Instance.AddItem(ItemCode.PlayerExp, 1);
     }
     public override void Receiver(int damage, DamageSender damageSender)
