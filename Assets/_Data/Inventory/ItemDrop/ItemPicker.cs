@@ -25,6 +25,11 @@ public class ItemPicker : SaiBehaviour
         if (other.transform.parent == null) return;
         ItemDropCtrl itemDropCtrl = other.transform.parent.GetComponent<ItemDropCtrl>();
         if (itemDropCtrl == null) return;
+
+        //Phan loai vat pham
+        ItemCode itemCode = itemDropCtrl.GetItemCode();
+        InventoriesManager.Instance.AddItem(itemCode, 1);
         itemDropCtrl.Despawn.DoDespawn();
     }
+
 }
