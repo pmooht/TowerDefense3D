@@ -15,7 +15,7 @@ public class ItemPicker : SaiBehaviour
     {
         if (this.sphereCollider != null) return;
         this.sphereCollider = GetComponent<SphereCollider>();
-        this.sphereCollider.radius = 0.3f;
+        this.sphereCollider.radius = 0.5f;
         this.sphereCollider.isTrigger = true;
         Debug.Log(transform.name + ": LoadSphereCollider", gameObject);
     }

@@ -15,6 +15,10 @@ public class TowerShooting : TowerAbstract
     [SerializeField] protected List<FirePoint> firePoints = new();
     [SerializeField] protected int normalBulletCounter = 0; // Dem so lan ban dan thuong
     [SerializeField] protected int heavyAttackThreshold = 10; // So lan ban dan thuong de kich hoat heavyAttack
+    [SerializeField] protected int killCount = 0;
+    public int KillCount => killCount;
+
+    [SerializeField] protected int totalKill = 0;
 
     protected override void LoadComponents()
     {
@@ -26,9 +30,11 @@ public class TowerShooting : TowerAbstract
         this.GetTarget();
         this.LookAtTarget();
         this.Shooting();
+        this.IsTargetDead();
     }
     protected virtual void GetTarget()
     {
+        if (this.target != null) return;
         this.target = this.ctrl.Radar.GetTarget();
     }
 
@@ -37,16 +43,6 @@ public class TowerShooting : TowerAbstract
         if (this.target == null) return;
         this.ctrl.Rotator.LookAt(this.target.transform.position);
     }
-    //protected virtual void LookAtTarget()
-    //{
-    //    if (this.target == null) return;
-
-    //    Collider collider = this.target.transform.Find("DamageReceiver").GetComponent<Collider>();
-    //    if (collider == null) return;
-    //    Vector3 targetPosition = collider.bounds.center;
-    //    this.ctrl.Rotator.LookAt(targetPosition);
-    //    Debug.DrawLine(this.ctrl.Rotator.position, targetPosition, Color.red, 2f);
-    //}
 
     protected virtual void Shooting()
     {
@@ -74,7 +70,7 @@ public class TowerShooting : TowerAbstract
         FirePoint firePoint = this.GetHeavyFirePoint();
         EffectCtrl newEffect = EffectSpawnerCtrl.Instance.Spawner.Spawn(this.heavyBullet, firePoint.transform.position, firePoint.transform.rotation );
         newEffect.gameObject.SetActive(true);
-        Debug.Log("HeavyAttack fired!");
+        //Debug.Log("HeavyAttack fired!");
     }
 
     protected virtual FirePoint GetFirePoint()
@@ -96,5 +92,21 @@ public class TowerShooting : TowerAbstract
         FirePoint[] points = this.ctrl.GetComponentsInChildren<FirePoint>();
         this.firePoints = new List<FirePoint>(points);
         Debug.LogWarning(transform.name + ": LoadFirePoint", gameObject);
+    }
+    protected virtual bool IsTargetDead()
+    {
+        if (this.target == null) return true;
+        if (!this.target.EnemyDamageReceiver.IsDead()) return false;
+        this.killCount++;
+        this.totalKill++;
+        this.target = null;
+        return true;
+    }
+    
+    public virtual bool DeductKillCount(int count)
+    {
+        if (this.killCount < count) return false;
+        this.killCount -= count;
+        return true;
     }
 }

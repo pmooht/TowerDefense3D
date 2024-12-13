@@ -8,6 +8,7 @@ public abstract class EnemyCtrl : PoolObj
 
     [SerializeField] protected Animator animator;
     public Animator Animator => animator;
+
     [SerializeField] protected EnemyDamageReceiver enemyDamageReceiver;
     public EnemyDamageReceiver EnemyDamageReceiver => enemyDamageReceiver;
 
