@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   inventoryType: 2
+  sprite: {fileID: 21300000, guid: cffa8cf9faf1b33488ff6cbb224e900c, type: 3}
   itemCode: 102
   itemName: Shotgun
   isStackable: 0

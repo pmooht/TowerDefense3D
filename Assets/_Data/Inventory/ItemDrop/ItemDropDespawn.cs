@@ -20,6 +20,7 @@ public class ItemDropDespawn : Despawn<ItemDropCtrl>
     public override void DoDespawn()
     {
         base.DoDespawn();
-        InventoriesManager.Instance.AddItem(ItemCode.Gold, this.ctrl.DropCount);
+        // Phan loai vat pham de them vao inventory
+        InventoriesManager.Instance.AddItem(this.ctrl.GetItemCode(), this.ctrl.DropCount);
     }
 }

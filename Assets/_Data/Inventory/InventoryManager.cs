@@ -77,18 +77,18 @@ public class InventoriesManager : SaiSingleton<InventoriesManager>
         this.AddItem(item);
     }
 
-    public virtual void RemoveItem(ItemCode itemCode, int itemCount)
-    {
-        ItemProfileSO itemProfile = this.GetProfileByCode(itemCode);
-        ItemInventory item = new(itemProfile, itemCount);
-        this.RemoveItem(item);
-    }
-
     public virtual void RemoveItem(ItemInventory itemInventory)
     {
         InventoryType inventoryType = itemInventory.ItemProfile.inventoryType;
         InventoryCtrl inventoryCtrl = this.GetByCodeName(inventoryType);
         inventoryCtrl.RemoveItem(itemInventory);
+    }
+
+    public virtual void RemoveItem(ItemCode itemCode, int itemCount)
+    {
+        ItemProfileSO itemProfile = this.GetProfileByCode(itemCode);
+        ItemInventory item = new(itemProfile, itemCount);
+        this.RemoveItem(item);
     }
 
 }

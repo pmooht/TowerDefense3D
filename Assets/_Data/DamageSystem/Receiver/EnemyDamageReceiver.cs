@@ -44,6 +44,7 @@ public class EnemyDamageReceiver : DamageReceiver
         Invoke(nameof(this.DoDespawn), 5f);
 
         ItemDropSpawnerCtrl.Instance.DropMany(ItemCode.Gold, transform.position, 10);
+        ItemDropSpawnerCtrl.Instance.DropMany(ItemCode.Diamon, transform.position, 2);
         ItemDropSpawnerCtrl.Instance.Drop(ItemCode.Wand, transform.position, 1);
         ItemDropSpawnerCtrl.Instance.Drop(ItemCode.Shotgun, transform.position, 1);
         ItemDropSpawnerCtrl.Instance.Drop(ItemCode.Piston, transform.position, 1);

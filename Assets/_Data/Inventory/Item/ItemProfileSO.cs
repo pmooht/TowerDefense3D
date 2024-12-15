@@ -5,6 +5,7 @@ public class ItemProfileSO : ScriptableObject
 {
     //public ItemType itemType; //Currency,Weapon,Armor,Potion, Eyes, Keys 
     public InventoryType inventoryType;
+    public Sprite sprite;
     public ItemCode itemCode;
     public string itemName;
     public bool isStackable = false;
