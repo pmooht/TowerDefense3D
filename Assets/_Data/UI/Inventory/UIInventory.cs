@@ -5,7 +5,7 @@ using UnityEngine;
 public class UIInventory : SaiSingleton<UIInventory>
 {
     [SerializeField] protected bool isShow = true;
-    protected bool IsShow => isShow;
+    public bool IsShow => isShow;
 
     [SerializeField] protected Transform showHide;
 
@@ -19,7 +19,7 @@ public class UIInventory : SaiSingleton<UIInventory>
 
     protected virtual void LateUpdate()
     {
-        //this.HotkeyToogleInventory();
+        this.HotkeyToogleInventory();
     }
 
     protected override void Start()
@@ -107,7 +107,7 @@ public class UIInventory : SaiSingleton<UIInventory>
 
     protected virtual void HotkeyToogleInventory()
     {
-        if (Hotkey.Instance.IsToogleInventoryUI) this.Toggle();
+        if (Hotkey.Instance.IsToogleInventoryUI) UIManager.Instance.ToggleInventory();
     }
 }
 

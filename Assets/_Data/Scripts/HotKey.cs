@@ -11,12 +11,15 @@ public class Hotkey : SaiSingleton<Hotkey>
     protected bool isToogleSetting = false;
     public bool IsToogleSetting => isToogleSetting;
 
+    protected bool isToggleShopUI = false;
+    public bool IsToggleShopUI => isToggleShopUI;
 
     protected virtual void Update()
     {
         this.OpenInventory();
         this.ToogleMusic();
         this.ToogleSetting();
+        this.ToggleShop();
     }
 
     protected virtual void OpenInventory()
@@ -31,6 +34,10 @@ public class Hotkey : SaiSingleton<Hotkey>
 
     protected virtual void ToogleSetting()
     {
-        this.isToogleSetting = Input.GetKeyUp(KeyCode.N);
+        this.isToogleSetting = Input.GetKeyUp(KeyCode.Escape);
+    }
+    protected virtual void ToggleShop()
+    {
+        this.isToggleShopUI = Input.GetKeyUp(KeyCode.B);
     }
 }
