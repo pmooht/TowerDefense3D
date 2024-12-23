@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletCtrl : EffectCtrl
+public class Muzzle1Ctrl : EffectCtrl
 {
     public override string GetName()
     {
-        return "Bullet";
+        return "Muzzle1";
     }
 }

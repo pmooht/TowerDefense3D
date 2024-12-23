@@ -6,8 +6,9 @@ public class TowerShooting : TowerAbstract
 {
     [Header("Shooting")]
     [SerializeField] protected EnemyCtrl target;
-    [SerializeField] protected EffectCtrl bullet;
-    [SerializeField] protected EffectCtrl heavyBullet;
+    [SerializeField] protected EffectCode bulletCode = EffectCode.Projectile1;
+    [SerializeField] protected EffectCode heavyBulletCode = EffectCode.HeavyBullet;
+    [SerializeField] protected EffectCode muzzleCode = EffectCode.Muzzle1;
     [SerializeField] protected float timer = 0;
     [SerializeField] protected float delay = 1f;
     [SerializeField] protected int firePointIndex = 0;
@@ -51,26 +52,43 @@ public class TowerShooting : TowerAbstract
         if (this.timer < this.delay) return;
         this.timer = 0;
 
+        FirePoint firePoint = this.GetFirePoint();
+        FirePoint heavyFirePoint = this.GetHeavyFirePoint();
+
         if (this.normalBulletCounter >= this.heavyAttackThreshold)
         {
-            HeavyAttack(); 
+            this.SpawnHeavyAttack(heavyFirePoint); 
             this.normalBulletCounter = 0; 
             return;
         }
-        FirePoint firePoint = this.GetFirePoint();
-        EffectCtrl newEffect = EffectSpawnerCtrl.Instance.Spawner.Spawn(this.bullet, firePoint.transform.position, firePoint.transform.rotation);
-        //Co the thay doi vi tri 
-        //newEffect.transform.position = new Vector3(1, 2, 3);
-        newEffect.gameObject.SetActive(true);
+        this.SpawnBullet(firePoint);
+        this.SpawnMuzzle(firePoint);
         this.normalBulletCounter++;
     }
 
-    protected virtual void HeavyAttack()
+    protected virtual EffectCtrl SpawnBullet(FirePoint firePoint)
     {
-        FirePoint firePoint = this.GetHeavyFirePoint();
-        EffectCtrl newEffect = EffectSpawnerCtrl.Instance.Spawner.Spawn(this.heavyBullet, firePoint.transform.position, firePoint.transform.rotation );
+        EffectCtrl prefab = EffectSpawnerCtrl.Instance.Prefabs.GetByName(this.bulletCode.ToString());
+        EffectCtrl newEffect = EffectSpawnerCtrl.Instance.Spawner.Spawn(prefab, firePoint.transform.position, firePoint.transform.rotation);
         newEffect.gameObject.SetActive(true);
-        //Debug.Log("HeavyAttack fired!");
+
+        return prefab;
+    }
+    protected virtual EffectCtrl SpawnMuzzle(FirePoint firePoint)
+    {
+        EffectCtrl prefab = EffectSpawnerCtrl.Instance.Prefabs.GetByName(this.muzzleCode.ToString());
+        EffectCtrl newEffect = EffectSpawnerCtrl.Instance.Spawner.Spawn(prefab, firePoint.transform.position, firePoint.transform.rotation);
+        newEffect.gameObject.SetActive(true);
+
+        return prefab;
+    }
+    protected virtual EffectCtrl SpawnHeavyAttack(FirePoint firePoint)
+    {
+        EffectCtrl prefab = EffectSpawnerCtrl.Instance.Prefabs.GetByName(this.heavyBulletCode.ToString());
+        EffectCtrl newEffect = EffectSpawnerCtrl.Instance.Spawner.Spawn(prefab, firePoint.transform.position, firePoint.transform.rotation );
+        newEffect.gameObject.SetActive(true);
+
+        return prefab;
     }
 
     protected virtual FirePoint GetFirePoint()
