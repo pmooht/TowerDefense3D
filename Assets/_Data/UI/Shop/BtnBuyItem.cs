@@ -6,6 +6,7 @@ public class BtnBuyItem : ButttonAbstract
 {
     [SerializeField] protected ItemShop itemShop;
     protected InventoryCtrl inventory;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -37,8 +38,7 @@ public class BtnBuyItem : ButttonAbstract
             InventoriesManager.Instance.AddItem(this.itemShop.GetItemCode(), 1);
             InventoriesManager.Instance.RemoveItem(ItemCode.Gold, this.itemShop.Price);
             UIShop.Instance.DisplayNotification("Sucessful!!!!");
-            
-            Debug.Log(CheckCurrency());
+
         }
         else UIShop.Instance.DisplayNotification("Not enough gold, broooo!!!!!");
 

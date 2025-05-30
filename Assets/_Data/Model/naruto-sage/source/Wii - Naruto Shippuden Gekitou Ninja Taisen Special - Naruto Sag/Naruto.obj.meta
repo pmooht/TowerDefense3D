@@ -1,14 +1,29 @@
 fileFormatVersion: 2
-guid: 0ec452f129f36ce4a916e5c6836dff25
+guid: bed364ff15d605248be1f88092b1fa60
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: nr2_eye.png
+    second: {fileID: 2100000, guid: b09d8ede75139c34aa5d07b4daa89d00, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: nr2_tex01.png
+    second: {fileID: 2100000, guid: b3ee942fce934ed4886730f376f0f14e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: nr2_tex02.png
+    second: {fileID: 2100000, guid: cd330309243a90c4aa32186a93ddd18c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
